@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link href="/resources/css/base.css" rel="stylesheet">
+    <link href="/resources/css/login/login.css" rel="stylesheet">
+</head>
+
+<body class="white">
+<div class="login-hd">
+    <div class="left-bg"></div>
+    <div class="right-bg"></div>
+    <div class="hd-inner">
+        <span class="logo"></span>
+        <span class="split"></span>
+        <span class="sys-name"></span>
+    </div>
+</div>
+<div class="login-bd">
+    <div class="bd-inner">
+        <div class="inner-wrap">
+            <div class="lg-zone">
+                <div class="lg-box">
+                    <div class="lg-label"><h4>User Login</h4></div>
+                    <form action="/User/login" method="post" id="loginForm">
+                        <div class="lg-username input-item clearfix">
+                            <i class="iconfont">&#xe60d;</i>
+                            <input name="userAccount" id="userAccount" type="text" placeholder="User" onkeydown="toPswd();">
+                        </div>
+                        <div class="lg-password input-item clearfix">
+                            <i class="iconfont">&#xe634;</i>
+                            <input name="userPasswd" id="userPasswd" type="password" placeholder="Passwd"
+                                   onkeydown="login();">
+                        </div>
+                        <div class="enter">
+                            <a href="javascript:;" class="orangebtn" onClick="javascript:resetForm();">repeat</a>
+                            <a href="javascript:;" class="greenbtn" onClick="javascript:check();">Login</a>
+                        </div>
+                        <div style="margin: 2px; text-align: center;">
+                            <span th:text="${msg}" style="color:red;"></span>
+                        </div>
+                    </form>
+                    <div class="line line-y"></div>
+                    <div class="line line-g"></div>
+                </div>
+            </div>
+            <div class="lg-poster"></div>
+        </div>
+    </div>
+</div>
+<div class="login-ft">
+    <div class="ft-inner">
+        <div class="about-us">
+            <a href="javascript:;">About</a>
+            <a href="javascript:;">Law</a>
+            <a href="javascript:;">Service</a>
+            <a href="javascript:;">Contact</a>
+        </div>
+        <div class="address">Version：v1.0.0_20190118</div>
+        <div class="other-info">Suggest FireFox46+</div>
+    </div>
+</div>
+
+<script src="/resources/js/jquery-easyui-1.9.4/jquery.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="/resources/js/jquery-easyui-1.9.4/jquery.easyui.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="/resources/js/jBox-1.0.5/jBox.all.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="/resources/js/jBox-1.0.5/plugins/jBox.Confirm.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="/resources/js/cryo1.js" charset="utf-8" type="text/javascript"></script>
+<script src="/resources/js/util.js" charset="utf-8" type="text/javascript"></script>
+<script src="/resources/js/pagejs/login.js" charset="utf-8" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+

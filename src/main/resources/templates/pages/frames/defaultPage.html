@@ -1,0 +1,97 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+    .icon_lists li {
+        float: left;
+        width: 150px;
+        height: 100px;
+        text-align: center;
+        padding: 5px;
+        margin: 10px 0px 10px 20px;
+    }
+
+    .icon_lists li:hover {
+        cursor: pointer;
+    }
+
+    .icon_lists .icon {
+        font-size: 42px;
+        line-height: 52px;
+        margin: 10px 0;
+        color: darkgreen;
+    }
+
+    .icon_lists .pf-nav-title {
+        font-size: medium;
+        margin: 10px 0;
+        color: darkgreen;
+    }
+
+    .icon_lists .sider-nav-s li {
+        height: 20px;
+    }
+</style>
+
+<script type="text/javascript">
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+        }
+    }
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="md-top">
+        <i class="iconfont icon">&#xe6a9;</i>
+        <span>Adapter Platform</span>
+    </div>
+    <div data-options="region:'center',border:true">
+        <ul class="icon_lists">
+            <li data-src="/pages/frames/hisWardPage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe63f;</i>
+                    <div class="pf-nav-title">HIS Ward</div>
+                </a>
+            </li>
+            <li data-src="/pages/frames/hisEmployeePage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe6d1;</i>
+                    <div class="pf-nav-title">HIS Nurse</div>
+                </a>
+            </li>
+            <li data-src="/pages/frames/hisRoomPage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe644;</i>
+                    <div class="pf-nav-title">HIS Room</div>
+                </a>
+            </li>
+            <li data-src="/pages/frames/hisBedPage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe641;</i>
+                    <div class="pf-nav-title">HIS Bed</div>
+                </a>
+            </li>
+            <li data-src="/pages/frames/hisPatientPage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe6d1;</i>
+                    <div class="pf-nav-title">HIS Patient</div>
+                </a>
+            </li>
+            <li data-src="/pages/frames/sysCfgPage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe674;</i>
+                    <div class="pf-nav-title">Config</div>
+                </a>
+            </li>
+            <li data-src="/pages/frames/dockPage.html" onclick="onMenuItemClicked(this);" class="shadow-box">
+                <a href="javascript:void(0);">
+                    <i class="icon iconfont">&#xe67d;</i>
+                    <div class="pf-nav-title">Options</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="../../resources/css/pagecss/hisRoomPage.css" type="text/css" rel="stylesheet">
+<script src="../../resources/js/pagejs/hisRoomPage.js"></script>
+
+<script type="text/javascript">
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+        }
+    }
+
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="md-top">
+        <span onclick="loadPage('/pages/frames/defaultPage.html');">
+            <i class="iconfont">&#xe608;</i>
+            <span>Return</span>
+        </span>
+        <i class="iconfont icon">&#xe644;</i>
+        <span>HIS Room</span>
+    </div>
+    <div data-options="region:'center',border:false">
+        <div class="easyui-layout itm-full">
+            <div data-options="region:'north',border:true" style="overflow: hidden; padding:5px; height:60px;">
+                <div class="k-word">
+                    <span>Ward code:</span>
+                    <input id="wardCode" class="easyui-textbox" data-options="prompt:'Key word'"/>
+                    <a class="btn btn-grn" href="javascript:void(0);"
+                       onClick="loadRoomData();">
+                        <i class="iconfont white-style">&#xe657;</i>
+                        <span class="pf-opt-name white-style">Search</span>
+                    </a>
+                </div>
+            </div>
+            <div data-options="region:'center',border:false">
+                <table id="hisRoomDataTbl" class="easyui-datagrid"
+                       data-options="
+                            url : basePath +'/hospital/reRoom',
+                            method : 'GET',
+                            queryParams:{'act':'queryByParam'},
+                            toolbar:'#hisRoomToolbar',
+                            fit : true,
+                            fitColumns : true,
+                            pagination: true,
+                            pageSize: page_size,
+                            pageList: page_list,
+                            rownumbers : true,
+                            striped:true,
+                            singleSelect : true,
+                            selectOnCheck : true,
+                            checkOnSelect : true">
+                    <thead>
+                    <tr>
+                        <th data-options="field:'ck', checkbox:true, hidden:true"></th>
+                        <th data-options="field:'roomCode', title:'Room name', width:150"></th>
+                        <th data-options="field:'wardCode', title:'Ward code', width:100"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hisRoomToolbar" class="toolbar-btn">
+    <a class="btn btn-org" href="javascript:void(0);"
+       onClick="javascript:$('#hisRoomDataTbl').datagrid('reload');">
+        <i class="iconfont">&#xe657;</i>
+        <span class="pf-opt-name">Refresh</span>
+    </a>
+</div>

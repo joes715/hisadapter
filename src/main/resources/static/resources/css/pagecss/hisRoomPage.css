@@ -1,0 +1,15 @@
+
+.k-word {
+    padding: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.k-word span {
+    font-size: medium;
+}
+
+.k-word input {
+    width: 120px;
+}
+

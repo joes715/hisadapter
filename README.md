@@ -1,0 +1,1 @@
+This is an app for data integration with hospital HIS systems, developed based on SpringBoot, used to synchronize data with HIS systems

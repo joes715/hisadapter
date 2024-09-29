@@ -1,0 +1,124 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type="text/javascript">
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function dockSave() {
+        if ($("#dockfm").form("validate")) {
+            var data = form2Json("dockfm");
+            data.act = "savedock";
+
+            var opt = {};
+            opt.url = basePath + "/hospital/dockcfg";
+            opt.type = "POST";
+            opt.data = data;
+            opt.callback = function (result) {
+                hideMask();
+                showMsg("Note", result.msg);
+                queryDockCfg();
+            };
+
+            sendAjax(opt);
+        }
+    }
+
+    function queryDockCfg() {
+        var data = {
+            act: "queryDockCfg"
+        };
+
+        var opt = {};
+        opt.url = basePath + "/hospital/dockcfg";
+        opt.type = "GET";
+        opt.data = data;
+        opt.callback = function (result) {
+            hideMask();
+            $("#dockfm").form("load", result);
+        };
+
+        sendAjax(opt);
+    }
+
+    function syncData() {
+        var data = {
+            act: "syncData"
+        };
+
+        var opt = {};
+        opt.url = basePath + "/hospital/dockcfg";
+        opt.type = "GET";
+        opt.data = data;
+        opt.callback = function (result) {
+            hideMask();
+            showMsg("Note", result.msg);
+        };
+
+        sendAjax(opt);
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+            queryDockCfg();
+        }
+    }
+
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="md-top">
+        <span onclick="loadPage('/pages/frames/defaultPage.html');">
+            <i class="iconfont">&#xe608;</i>
+            <span> Return</span>
+        </span>
+        <i class="iconfont icon">&#xe67d;</i>
+        <span>Adapter Configuration</span>
+    </div>
+    <div data-options="region:'center',border:true">
+        <div style="padding:10px;">
+            <form id="dockfm" class="easyui-form">
+                <div class="fitem">
+                    <label>Enable: </label>
+                    <input class="easyui-switchbutton" name="enable_docking"
+                           data-options="
+                        onText:'On',
+                        offText:'Off',
+                        onChange:function(checked){
+                            console.log(checked);
+                        }">
+                </div>
+                <div style="font-size:medium; font-weight: bold; margin-bottom: 10px;">
+                    Type:
+                </div>
+                <div class="fitem">
+                    <label>View:</label>
+                    <input class="easyui-radiobutton" name="dock_type" value="view">
+                    <label>WebService:</label>
+                    <input class="easyui-radiobutton" name="dock_type" value="ws">
+                </div>
+                <div class="fitem">
+                    <label>Sync Patient Schedule:</label>
+                    <input class="easyui-textbox" name="syn_patient_schedule" value="10"
+                           data-options="prompt:'Sync Schedule:Minute'">
+                </div>
+            </form>
+        </div>
+        <div class="toolbar-btn" style="margin-left:50px;">
+            <a class="btn btn-grn" href="javascript:void(0)" onclick="dockSave();">
+                <i class="iconfont">&#xe665;</i>
+                <span class="pf-opt-name">Save</span>
+            </a>
+            <a class="btn btn-zs" href="javascript:void(0)" onclick="syncData();">
+                <i class="iconfont">&#xe6a2;</i>
+                <span class="pf-opt-name">Sync</span>
+            </a>
+        </div>
+    </div>
+</div>

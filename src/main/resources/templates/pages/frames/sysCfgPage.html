@@ -1,0 +1,247 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="../../resources/css/pagecss/sysCfgPage.css" type="text/css" rel="stylesheet">
+<script src="../../resources/js/pagejs/sysCfgPage.js"></script>
+
+<style type="text/css">
+    .oneWidth {
+        width: 530px;
+    }
+</style>
+<script type="text/javascript">
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+            loadDsData();
+        }
+    }
+
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="md-top">
+        <span onclick="loadPage('/pages/frames/defaultPage.html');">
+            <i class="iconfont">&#xe608;</i>
+            <span>Return</span>
+        </span>
+        <i class="iconfont icon">&#xe674;</i>
+        <span>Config</span>
+        <label style="float: right;" onclick="showDsSmaple();">Datasource sample</label>
+    </div>
+    <div data-options="region:'center',border:true">
+        <div class="ftitle">Datasource config</div>
+        <div style="margin:10px;">
+            <div class="easyui-panel" data-options="width:700,height:320,iconCls:'icon-edit',title:'Local Datasource'">
+                <fieldset class="mfieldset">
+                    <legend>Local Datasource</legend>
+                    <form id="ds-local-fm" class="easyui-form" method="post">
+                        <div class="fitem">
+                            <label>dbUser:</label>
+                            <input name="db_user" class="easyui-passwordbox oneWidth"
+                                   data-options="prompt:'Db User',showEye:false, required:true">
+                        </div>
+                        <div class="fitem">
+                            <label>dbPasswd:</label>
+                            <input name="db_pswd" class="easyui-passwordbox oneWidth"
+                                   data-options="prompt:'Db Passwd',showEye:false, required:true">
+                        </div>
+                        <div class="fitem">
+                            <label>Db Driver:</label>
+                            <input name="db_driver" class="easyui-textbox oneWidth" data-options="required:true">
+                        </div>
+                        <div class="fitem">
+                            <label>Db URL:</label>
+                            <input name="db_url" class="easyui-textbox oneWidth"
+                                   data-options="required:true, height:60, multiline:true">
+                        </div>
+                    </form>
+                </fieldset>
+
+                <div id="ftr-local" class="toolbar-btn">
+                    <a class="btn btn-grn" href="javascript:void(0)"
+                       onclick="saveSysCfg('editDbCfg','ds-local-fm','ds-local');">
+                        <i class="iconfont">&#xe665;</i>
+                        <span class="pf-opt-name">Save</span>
+                    </a>
+                    <a class="btn btn-org" href="javascript:void(0)"
+                       onclick="loadSysCfg('queryDbCfg','ds-local-fm','ds-local');">
+                        <i class="iconfont">&#xe657;</i>
+                        <span class="pf-opt-name">Refresh</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin:10px;">
+            <div class="easyui-panel" data-options="width:700,height:320,iconCls:'icon-edit',title:'HIS Datasource'">
+                <fieldset class="mfieldset">
+                    <legend>HIS Datasource</legend>
+                    <form id="ds-his-fm" class="easyui-form" method="post">
+                        <div class="fitem">
+                            <label>Db User:</label>
+                            <input name="db_user" class="easyui-passwordbox oneWidth"
+                                   data-options="required:true,showEye:false">
+                        </div>
+                        <div class="fitem">
+                            <label>Db Passwd:</label>
+                            <input name="db_pswd" class="easyui-passwordbox oneWidth"
+                                   data-options="required:true,showEye:false">
+                        </div>
+                        <div class="fitem">
+                            <label>Db Driver:</label>
+                            <input name="db_driver" class="easyui-textbox oneWidth"
+                                   data-options="required:true">
+                        </div>
+                        <div class="fitem">
+                            <label>Db URL:</label>
+                            <input name="db_url" class="easyui-textbox oneWidth"
+                                   data-options="required:true, height:60, multiline:true">
+                        </div>
+                    </form>
+                </fieldset>
+
+                <div id="ftr-his" class="toolbar-btn">
+                    <a class="btn btn-grn" href="javascript:void(0)"
+                       onclick="saveSysCfg('editDbCfg','ds-his-fm','ds-his');">
+                        <i class="iconfont">&#xe665;</i>
+                        <span class="pf-opt-name">Save</span>
+                    </a>
+                    <a class="btn btn-org" href="javascript:void(0)"
+                       onclick="loadSysCfg('queryDbCfg','ds-his-fm','ds-his');">
+                        <i class="iconfont">&#xe657;</i>
+                        <span class="pf-opt-name">Refresh</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin:10px;">
+            <div class="easyui-panel" data-options="width:700,height:320,iconCls:'icon-edit',title:'Other Datasource'">
+                <fieldset class="mfieldset">
+                    <legend>Other Datasource</legend>
+                    <form id="ds-th-fm" class="easyui-form" method="post">
+                        <div class="fitem">
+                            <label>Db User:</label>
+                            <input name="db_user" class="easyui-passwordbox oneWidth"
+                                   data-options="required:true,showEye:false">
+                        </div>
+                        <div class="fitem">
+                            <label>Db Passwd:</label>
+                            <input name="db_pswd" class="easyui-passwordbox oneWidth"
+                                   data-options="required:true,showEye:false">
+                        </div>
+                        <div class="fitem">
+                            <label>Db Driver:</label>
+                            <input name="db_driver" class="easyui-textbox oneWidth"
+                                   data-options="required:true">
+                        </div>
+                        <div class="fitem">
+                            <label>Db URL:</label>
+                            <input name="db_url" class="easyui-textbox oneWidth"
+                                   data-options="required:true, height:60, multiline:true">
+                        </div>
+                    </form>
+                </fieldset>
+
+                <div id="ftr-th" class="toolbar-btn">
+                    <a class="btn btn-grn" href="javascript:void(0)"
+                       onclick="saveSysCfg('editDbCfg','ds-th-fm','ds-th');">
+                        <i class="iconfont">&#xe665;</i>
+                        <span class="pf-opt-name">Save</span>
+                    </a>
+                    <a class="btn btn-org" href="javascript:void(0)"
+                       onclick="loadSysCfg('queryDbCfg','ds-th-fm','ds-th');">
+                        <i class="iconfont">&#xe657;</i>
+                        <span class="pf-opt-name">Refresh</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin:10px;">
+            <div class="easyui-panel" data-options="width:700,height:280,iconCls:'icon-edit',title:'Web Service Config'">
+                <fieldset class="mfieldset">
+                    <legend>Web Service Config</legend>
+                    <form id="ds-ws-fm" class="easyui-form" method="post">
+                        <div class="fitem">
+                            <label>WS Url:</label>
+                            <input name="ws_url" class="easyui-textbox oneWidth"
+                                   data-options="required:true, height:60, multiline:true">
+                        </div>
+                        <div class="fitem">
+                            <label>Opt1:</label>
+                            <input name="ws_opt1" class="easyui-textbox oneWidth" data-options="">
+                        </div>
+                        <div class="fitem">
+                            <label>Opt2:</label>
+                            <input name="ws_opt2" class="easyui-textbox oneWidth" data-options="">
+                        </div>
+                    </form>
+                </fieldset>
+                <div id="ftr-ws" class="toolbar-btn">
+                    <a class="btn btn-grn" href="javascript:void(0)"
+                       onclick="saveSysCfg('editDbCfg','ds-ws-fm','ds-ws');">
+                        <i class="iconfont">&#xe665;</i>
+                        <span class="pf-opt-name">Save</span>
+                    </a>
+                    <a class="btn btn-org" href="javascript:void(0)"
+                       onclick="loadSysCfg('queryDbCfg','ds-ws-fm','ds-ws');">
+                        <i class="iconfont">&#xe657;</i>
+                        <span class="pf-opt-name">Refresh</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ds_sample" class="easyui-dialog"
+     data-options="title:'Config sample', closed:true, width:800, height:600, modal:false">
+    <div>
+        <fieldset class="mfieldset">
+            <legend>MySQL</legend>
+            <div>driver:</div>
+            <div>com.mysql.cj.jdbc.Driver</div>
+            <div>url:</div>
+            <div>jdbc:mysql://127.0.0.1:3306/&lt;dbname&gt;?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&autoReconnect=true</div>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset class="mfieldset">
+            <legend>Oracle</legend>
+            <div>driver:</div>
+            <div>oracle.jdbc.driver.OracleDriver</div>
+            <div>sid_name url:</div>
+            <div>jdbc:oracle:thin:@127.0.0.1:1521:&lt;dbname&gt;</div>
+            <div>service_name url:</div>
+            <div>jdbc:oracle:thin:@//127.0.0.1:1521/&lt;dbname&gt;</div>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset class="mfieldset">
+            <legend>SqlServer</legend>
+            <div>driver:</div>
+            <div>com.microsoft.sqlserver.jdbc.SQLServerDriver</div>
+            <div>url:</div>
+            <div>jdbc:sqlserver://127.0.0.1:1433;DatabaseName=&lt;dbname&gt;</div>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset class="mfieldset">
+            <legend>Cache</legend>
+            <div>driver:</div>
+            <div>com.intersys.jdbc.CacheDriver</div>
+            <div>url:</div>
+            <div>jdbc:Cache://127.0.0.1:1972/&lt;dbname&gt;</div>
+        </fieldset>
+    </div>
+</div>

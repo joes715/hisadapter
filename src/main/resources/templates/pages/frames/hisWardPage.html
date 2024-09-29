@@ -1,0 +1,68 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+    .oneWidth {
+        width: 350px;
+    }
+</style>
+
+<script type="text/javascript">
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+        }
+    }
+
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="md-top">
+        <span onclick="loadPage('/pages/frames/defaultPage.html');">
+            <i class="iconfont">&#xe608;</i>
+            <span>Return</span>
+        </span>
+        <i class="iconfont icon">&#xe63f;</i>
+        <span>HIS Ward List</span>
+    </div>
+    <div data-options="region:'center',border:false">
+        <table id="hisWardDataTbl" class="easyui-datagrid"
+               data-options="
+					url : basePath +'/hospital/reWard',
+					method : 'GET',
+					queryParams:{'act':'queryAll'},
+					toolbar:'#hisWardToolbar',
+					fit : true,
+					fitColumns : true,
+				 	rownumbers : true,
+				 	striped:true,
+				 	singleSelect : true,
+				 	selectOnCheck : true,
+					checkOnSelect : true">
+            <thead>
+            <tr>
+                <th data-options="field:'ck', checkbox:true, hidden:true"></th>
+                <th data-options="field:'wardName', title:'HIS Ward name', width:150"></th>
+                <th data-options="field:'wardCode', title:'HIS Ward code', width:150"></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<div id="hisWardToolbar" class="toolbar-btn">
+    <a class="btn btn-org" href="javascript:void(0);"
+       onClick="javascript:$('#hisWardDataTbl').datagrid('reload');">
+        <i class="iconfont">&#xe657;</i>
+        <span class="pf-opt-name">Refresh</span>
+    </a>
+</div>

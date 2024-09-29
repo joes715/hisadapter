@@ -1,0 +1,75 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+    .oneWidth {
+        width: 350px;
+    }
+
+    #editAdminPswdDlgBtns {
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    #editAdminPswdDlg {
+        padding: 10px;
+    }
+
+    .itm-full .top-panel {
+        overflow: hidden;
+        height: 55px;
+    }
+</style>
+
+<script type="text/javascript">
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+            $("#editAdminPswdfm").form("clear");
+        }
+    }
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="top-panel">
+        <div class="toolbar-btn">
+            <a class="btn btn-zs" href="javascript:void(0);" onClick="backLastPage();">
+                <i class="iconfont white-style">&#xe631;</i>
+                <span class="pf-opt-name white-style">Return</span>
+            </a>
+        </div>
+    </div>
+    <div id="subcontent" class="subcontent" data-options="region:'center',border:true">
+        <div id="editAdminPswdDlg" class="easyui-panel pswd-panel"
+             data-options="iconCls:'icon-edit',title:'Change passwd',width:600,height:200">
+            <fieldset class="mfieldset">
+                <legend>Change passwd</legend>
+                <form id="editAdminPswdfm" class="easyui-form" method="post">
+                    <div class="fitem" id="pswdItem">
+                        <label>New Passwd:</label>
+                        <input name="userPasswd" id="userPasswd" class="easyui-textbox oneWidth"
+                               data-options="required:true">
+                    </div>
+                </form>
+            </fieldset>
+            <div id="editAdminPswdDlgBtns" class="toolbar-btn">
+                <a class="btn btn-grn" href="javascript:void(0);" onClick="saveAdminPswd();">
+                    <i class="iconfont">&#xe665;</i>
+                    <span class="pf-opt-name">Save</span>
+                </a>
+                <a class="btn btn-red" href="javascript:void(0);" onClick="$('#editAdminPswdfm').form('clear');">
+                    <i class="iconfont">&#xe605;</i>
+                    <span class="pf-opt-name">Clear</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

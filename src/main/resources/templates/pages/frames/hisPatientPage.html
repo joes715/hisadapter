@@ -1,0 +1,108 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="../../resources/css/pagecss/hisPatientPage.css" type="text/css" rel="stylesheet">
+<script src="../../resources/js/pagejs/hisPatientPage.js"></script>
+<script type="text/javascript">
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+        }
+    }
+
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="md-top">
+        <span onclick="loadPage('/pages/frames/defaultPage.html');">
+            <i class="iconfont">&#xe608;</i>
+            <span>Return</span>
+        </span>
+        <i class="iconfont icon">&#xe6d1;</i>
+        <span>HIS patient</span>
+    </div>
+    <div data-options="region:'center',border:false">
+        <div class="easyui-layout itm-full">
+            <div data-options="region:'north',border:true" style="overflow: hidden; padding:5px; height:60px;">
+                <div class="k-word">
+                    <span>Ward code:</span>
+                    <input id="wardCode" class="easyui-textbox" data-options="prompt:'Ward code'"/>
+                    <span>Patient name:</span>
+                    <input id="keyword" class="easyui-textbox" data-options="prompt:'Patient name'"/>
+                    <a class="btn btn-grn" href="javascript:void(0);"
+                       onClick="loadPatientData();">
+                        <i class="iconfont white-style">&#xe657;</i>
+                        <span class="pf-opt-name white-style"> Search</span>
+                    </a>
+                </div>
+            </div>
+            <div data-options="region:'center',border:false">
+                <table id="hisPatientDataTbl" class="easyui-datagrid"
+                       data-options="
+                            url : basePath +'/hospital/rePatient',
+                            method : 'GET',
+                            queryParams : {'act':'queryByParam'},
+                            toolbar : '#hisPatientToolbar',
+                            fit : true,
+                            fitColumns : true,
+                            pagination : true,
+                            pageSize : page_size,
+                            pageList : page_list,
+                            rownumbers : true,
+                            striped : true,
+                            singleSelect : true,
+                            selectOnCheck : true,
+                            checkOnSelect : true">
+                    <thead>
+                    <tr>
+                        <th data-options="field:'ck', checkbox:true, hidden:true"></th>
+                        <th data-options="field:'patName', title:'patName', width:70"></th>
+                        <th data-options="field:'patSex', title:'patSex', width:50"></th>
+                        <th data-options="field:'patAge', title:'patAge', width:50"></th>
+                        <th data-options="field:'patBirth', title:'patBirth', width:80"></th>
+                        <th data-options="field:'patCode', title:'patCode', width:80"></th>
+                        <th data-options="field:'patQrCode', title:'patQrCode', width:80"></th>
+                        <th data-options="field:'patInDate', title:'patInDate', width:80"></th>
+                        <th data-options="field:'patInfo', title:'patInfo', width:60"></th>
+                        <th data-options="field:'levelCode', title:'levelCode', width:60"></th>
+                        <th data-options="field:'outDate', title:'outDate', width:80"></th>
+                        <th data-options="field:'oprDate', title:'oprDate', width:80"></th>
+                        <th data-options="field:'mvInDate', title:'mvInDate', width:80"></th>
+                        <th data-options="field:'mvOutDate', title:'mvOutDate', width:80"></th>
+                        <th data-options="field:'payType', title:'payType', width:70"></th>
+                        <th data-options="field:'guoMing', title:'guoMing', width:100"></th>
+                        <th data-options="field:'foods', title:'foods', width:100"></th>
+                        <th data-options="field:'examing', title:'examing', width:100"></th>
+                        <th data-options="field:'withSome', title:'withSome', width:60"></th>
+                        <th data-options="field:'safe', title:'safe', width:100"></th>
+                        <th data-options="field:'isolate', title:'isolate', width:100"></th>
+                        <th data-options="field:'doctorAdvice', title:'doctorAdvice', width:150"></th>
+                        <th data-options="field:'doctor', title:'doctor', width:60"></th>
+                        <th data-options="field:'doctorCode', title:'doctorCode', width:60"></th>
+                        <th data-options="field:'nurse', title:'nurse', width:60"></th>
+                        <th data-options="field:'nurseCode', title:'nurseCode', width:60"></th>
+                        <th data-options="field:'bedCode', title:'bedCode', width:60"></th>
+                        <th data-options="field:'wardCode', title:'wardCode', width:60"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hisPatientToolbar" class="toolbar-btn">
+    <a class="btn btn-org" href="javascript:void(0);"
+       onClick="javascript:$('#hisPatientDataTbl').datagrid('reload');">
+        <i class="iconfont">&#xe657;</i>
+        <span class="pf-opt-name">Refresh</span>
+    </a>
+</div>

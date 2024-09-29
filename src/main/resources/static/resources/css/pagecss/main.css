@@ -1,0 +1,278 @@
+.main-north {
+    height: 72px;
+    overflow: hidden;
+}
+
+ol, ul {
+    list-style: none
+}
+
+#pf-hd {
+    height: 70px;
+    position: relative;
+    z-index: 0;
+    background-color: #1da02b;
+}
+
+#pf-hd .pf-logo {
+    float: left;
+    padding: 0 15px;
+    height: 100%;
+    width: 249px;
+    border-right: 1px solid #198b25;
+    line-height: 70px;
+    background-image: url("/resources/images/main/main_logo.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    text-align: center;
+}
+
+#pf-hd .pf-title {
+    display: inline-block;
+    line-height: 100%;
+    width: 130px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: -40px;
+}
+
+#pf-hd .pf-logo img {
+    vertical-align: middle;
+    margin-left: -10px
+}
+
+#pf-hd .pf-nav-wrap {
+    position: relative;
+    float: left
+}
+
+#pf-hd .pf-nav-wrap .pf-nav-ww {
+    float: left;
+    height: 70px;
+    width: 625px;
+    overflow: hidden
+}
+
+#pf-hd .pf-nav {
+    float: left
+}
+
+#pf-hd .pf-nav .pf-nav-item {
+    float: left;
+    height: 70px;
+    width: 80px;
+    color: #fff;
+    padding: 0 5px;
+    border-right: 1px solid #198b25
+}
+
+#pf-hd .pf-nav .pf-nav-item a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+#pf-hd .pf-nav .pf-nav-item .iconfont {
+    display: block;
+    margin-top: 12px;
+    font-size: 26px;
+    height: 30px;
+    text-align: center;
+}
+
+#pf-hd .pf-user {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    padding: 0 10px;
+    height: 70px;
+    cursor: pointer
+}
+
+#pf-hd .pf-user .pf-user-photo {
+    float: left;
+    margin: 12px 10px 0 0;
+    width: 48px;
+    height: 48px
+}
+
+#pf-hd .pf-user .pf-user-photo img {
+    margin: 4px
+}
+
+#pf-hd .pf-user .pf-user-name {
+    float: left;
+    max-width: 150px;
+    color: #fff;
+    font-size: 14px;
+    margin-right: 5px;
+    line-height: 70px;
+}
+
+#pf-sider {
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+    transition: all 0.3s ease
+}
+
+#pf-sider .pf-model-name {
+    position: relative;
+    padding: 0 20px;
+    height: 49px;
+    line-height: 49px;
+    color: #2d4112;
+    background: #e3e3e3;
+    border-bottom: 1px solid #bdbdbd;
+    font-size: 16px
+}
+
+#pf-sider .pf-model-name .iconfont {
+    font-size: 20px
+}
+
+#pf-sider .pf-model-name .pf-sider-icon {
+    float: left;
+    margin: 10px 15px 0 0;
+    width: 20px;
+    height: 20px;
+    font-size: 20px
+}
+
+#pf-sider .pf-model-name .toggle-icon {
+    position: absolute;
+    right: 0;
+    top: 14px;
+    width: 19px;
+    height: 22px;
+    background: url(../../images/main/sider-toggle.png) no-repeat;
+    background-position: 0 0;
+    cursor: pointer
+}
+
+#pf-sider .sider-nav > li {
+    border-bottom: 1px solid #dbdbdb;
+    background: #fff
+}
+
+#pf-sider .sider-nav > li a {
+    display: block;
+    padding: 0 15px;
+    height: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #000;
+    font-size: 14px;
+    text-decoration: none
+}
+
+#pf-sider .sider-nav > li .sider-nav-title {
+    float: left;
+    width: 112px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 16px
+}
+
+#pf-sider .sider-nav > li .iconfont {
+    float: right;
+    font-size: 12px;
+    color: #acacab
+}
+
+#pf-sider .sider-nav > li .sider-nav-icon {
+    float: left;
+    margin: 0 10px 0 0;
+    color: #4fb259;
+    font-size: 24px
+}
+
+#pf-sider .sider-nav > li.current {
+    border-bottom: none;
+    background: #1da02b
+}
+
+#pf-sider .sider-nav > li.current > a {
+    border-left: 3px solid #ffa405;
+    padding-left: 12px;
+    color: #fff
+}
+
+#pf-sider .sider-nav > li.current .iconfont {
+    color: #fff
+}
+
+#pf-sider .sider-nav > li.current .sider-nav-icon {
+    color: #fff
+}
+
+#pf-sider .sider-nav > li .sider-nav-s {
+    display: none;
+    padding: 10px 0;
+    background: #f1f1f1;
+    color: #000;
+    font-size: 12px;
+    border-bottom: 1px solid #dbdbdb
+}
+
+#pf-sider .sider-nav > li .sider-nav-s li.active {
+    background: #fff
+}
+
+#pf-sider .sider-nav > li .sider-nav-s li.active a {
+    color: #1da02b;
+    font-weight: bold
+}
+
+#pf-sider .sider-nav > li .sider-nav-s a {
+    height: 31px;
+    line-height: 31px;
+    color: #000;
+    font-size: 14px;
+    padding-left: 40px;
+    background: url('../../images/main/left_list.png?1463555463') no-repeat 30px center
+}
+
+#pf-sider .sider-nav > li.current .sider-nav-s {
+    display: block
+}
+
+#pf-ft {
+    width: 100%;
+    height: 27px;
+    line-height: 27px;
+    bottom: 3px;
+    background: #f1f1f1;
+}
+
+#pf-ft .system-name, #pf-ft .copyright-name {
+    float: left;
+    margin-left: 8px;
+    font-size: 12px;
+    color: #8b8b8b
+}
+
+#pf-ft .system-name .iconfont, #pf-ft .copyright-name .iconfont {
+    color: #1da02b;
+    margin-right: 3px
+}
+
+#pf-ft .copyright-name {
+    float: right
+}
+
+#pf-ft .copyright-name .iconfont {
+    font-size: 8px;
+}
+
+.itm-full .md-top .icon {
+    margin-left: 20px;
+}

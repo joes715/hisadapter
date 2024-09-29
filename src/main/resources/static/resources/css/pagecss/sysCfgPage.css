@@ -1,0 +1,16 @@
+.oneWidth {
+    width: 530px;
+}
+
+.ds-panel {
+    margin: 10px;
+}
+
+.toolbar-btn {
+    float: right;
+    margin-right: 10px;
+}
+
+#ds_sample fieldset div {
+    padding: 2px;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>His adaption system</title>
+    <link href="/resources/css/base.css" type="text/css" rel="stylesheet">
+    <link href="/resources/css/pagecss/main.css" type="text/css" rel="stylesheet">
+    <link href="/resources/js/jBox-1.0.5/jBox.all.min.css" type="text/css" rel="stylesheet">
+    <link href="/resources/js/jBox-1.0.5/plugins/jBox.Confirm.min.css" type="text/css" rel="stylesheet">
+    <link href="/resources/js/jquery-easyui-1.9.4/themes/material-blue/easyui.css" type="text/css" rel="stylesheet"
+          id="easyuiThemes">
+    <link href="/resources/js/jquery-easyui-1.9.4/themes/icon.css" type="text/css" rel="stylesheet">
+    <link href="/resources/css/style.css" type="text/css" rel="stylesheet">
+
+    <script src="/resources/js/jquery-easyui-1.9.4/jquery.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="/resources/js/jquery-easyui-1.9.4/jquery.easyui.min.js" charset="utf-8"
+            type="text/javascript"></script>
+    <script src="/resources/js/jquery-easyui-1.9.4/locale/easyui-lang-zh_CN.js" charset="utf-8"
+            type="text/javascript"></script>
+    <script src="/resources/js/jBox-1.0.5/jBox.all.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="/resources/js/jBox-1.0.5/plugins/jBox.Confirm.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="/resources/js/cryo1.js" charset="utf-8" type="text/javascript"></script>
+    <script src="/resources/js/util.js" charset="utf-8" type="text/javascript"></script>
+    <script src="/resources/js/common.js" charset="utf-8" type="text/javascript"></script>
+
+    <style type="text/css">
+        .oneWidth {
+            width: 350px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var curUserName = "[[${session.user.userAccount}]]";
+        var curUserAlias = "[[${session.user.userNick}]]";
+        var basePath = "[[${#servletContext.getContextPath()}]]";
+        var mtoken = "[[${#servletContext.getAttribute('TOKEN')}]]";
+        var ADMIN_USER = 1;
+        var GENERAL_USER = 3;
+        var needClear = false;
+        var page_size = 20;
+        var page_list = [20, 30, 40];
+        var lastItem = null;
+        var ctxInited = false;
+
+        function isAdmin() {
+            return (parseInt(userRoleId) == ADMIN_USER);
+        }
+
+        $(function () {
+            mainPlatform.init();
+            loadPage("/pages/frames/defaultPage.html");
+        });
+    </script>
+
+</head>
+
+<body class="easyui-layout" data-options="fit:true">
+<div data-options="region:'north'" class="main-north">
+    <div id="pf-hd">
+        <div class="pf-logo">
+            <div class="pf-title"></div>
+        </div>
+        <div class="pf-nav-wrap">
+            <div class="pf-nav-ww">
+                <ul class="pf-nav">
+                    <li class="pf-nav-item" data-btn="pswd">
+                        <a href="javascript:void(0);">
+                            <span class="iconfont">&#xe634;</span>
+                            <span class="pf-nav-title">Admin Passwd</span>
+                        </a>
+                    </li>
+                    <li class="pf-nav-item" data-btn="about">
+                        <a href="javascript:void(0);">
+                            <span class="iconfont">&#xe666;</span>
+                            <span class="pf-nav-title">About</span>
+                        </a>
+                    </li>
+                    <li class="pf-nav-item" data-btn="logout">
+                        <a href="javascript:void(0);">
+                            <span class="iconfont">&#xe60e;</span>
+                            <span class="pf-nav-title">Exit</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pf-user">
+            <div class="pf-user-photo">
+                <img src="/resources/images/main/user.png" alt="">
+            </div>
+            <div class="pf-user-name" id="username"></div>
+        </div>
+    </div>
+</div>
+
+<div data-options="region:'west'" style="width:250px;">
+
+    <div id="pf-sider">
+
+        <ul class="sider-nav">
+            <li class="left-menu">
+                <a href="javascript:void(0);">
+                    <span class="iconfont sider-nav-icon">&#xe6a9;</span>
+                    <span class="sider-nav-title">HIS Info</span>
+                    <i class="iconfont">&#xe642;</i>
+                </a>
+                <ul class="sider-nav-s">
+                    <li data-src="/pages/frames/hisWardPage.html"><a href="javascript:void(0);">HIS Ward Info</a></li>
+                    <li data-src="/pages/frames/hisEmployeePage.html"><a href="javascript:void(0);">HIS Nurse</a></li>
+                    <li data-src="/pages/frames/hisRoomPage.html"><a href="javascript:void(0);">HIS Room</a></li>
+                    <li data-src="/pages/frames/hisBedPage.html"><a href="javascript:void(0);">HIS Bed</a></li>
+                    <li data-src="/pages/frames/hisPatientPage.html"><a href="javascript:void(0);">HIS Patient</a></li>
+                </ul>
+            </li>
+            <li class="left-menu" data-src="/pages/frames/sysCfgPage.html" onclick="onMenuItemClicked(this);">
+                <a href="javascript:void(0);">
+                    <span class="iconfont sider-nav-icon">&#xe674;</span>
+                    <span class="sider-nav-title">Config</span>
+                </a>
+            </li>
+            <li class="left-menu" data-src="/pages/frames/dockPage.html" onclick="onMenuItemClicked(this);">
+                <a href="javascript:void(0);">
+                    <span class="iconfont sider-nav-icon">&#xe67d;</span>
+                    <span class="sider-nav-title">Adapter Options</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div data-options="region:'center'" style="padding:5px; overflow: hidden;" id="contentPanel">
+
+</div>
+<div data-options="region:'south'" style="height:30px;">
+    <div id="pf-ft">
+        <div class="system-name">
+            <i class="iconfont">&#xe6fe;</i>
+            <span></span>
+        </div>
+        <div class="copyright-name">
+            <span></span>
+            <i class="iconfont">&#xe6ff;</i>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="/resources/js/pagejs/main.js" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript">
+    $("#username").html(getTxt(curUserName) + "(" + getTxt(curUserAlias) + ")");
+</script>
+
+</html>

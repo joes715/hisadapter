@@ -1,0 +1,84 @@
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+    #aboutPanel {
+        padding: 10px;
+    }
+
+    .itm-full .top-panel {
+        overflow: hidden;
+        height: 55px;
+    }
+
+    .itm-full .subcontent .aboutPanel .mfieldset .fitem {
+        margin-bottom: 10px;
+    }
+
+    .itm-full .subcontent .aboutPanel .toolbar-btn {
+        text-align: right;
+        margin-top: 20px;
+    }
+</style>
+
+<script type="text/javascript">
+
+    function setBtn() {
+        if (isAdmin()) {
+
+        }
+    }
+
+    function reloadAbout() {
+        queryVersion();
+    }
+
+    function queryVersion() {
+        var opt = {};
+        opt.url = basePath + "/hospital/syscfg";
+        opt.type = "GET";
+        opt.data = "act=queryVersion";
+        opt.callback = function (result) {
+            hideMask();
+            $("#mversion").html(result.att);
+        };
+
+        sendAjax(opt);
+    }
+
+    function init() {
+        if (!ctxInited) {
+            ctxInited = true;
+            reloadAbout();
+        }
+    }
+</script>
+
+<div class="easyui-layout itm-full">
+    <div data-options="region:'north',border:true" class="top-panel">
+        <div class="toolbar-btn">
+            <a class="btn btn-zs" href="javascript:void(0);" onClick="backLastPage();">
+                <i class="iconfont white-style">&#xe631;</i>
+                <span class="pf-opt-name white-style">Return</span>
+            </a>
+        </div>
+    </div>
+    <div id="subcontent" class="subcontent" data-options="region:'center',border:true">
+        <div id="aboutPanel" class="easyui-panel aboutPanel"
+             data-options="iconCls:'icon-edit',title:'About',width:600,height:180">
+            <fieldset class="mfieldset">
+                <legend>Hospital Data Platform</legend>
+                <div>version：<span id="mversion"></span></div>
+            </fieldset>
+
+            <div class="toolbar-btn">
+                <a class="btn btn-org" href="javascript:void(0);" onClick="reloadAbout();">
+                    <i class="iconfont">&#xe657;</i>
+                    <span class="pf-opt-name">Refresh</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
